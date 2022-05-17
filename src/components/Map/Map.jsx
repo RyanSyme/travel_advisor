@@ -18,9 +18,10 @@ const Map = ({ setCoordinates, setBounds, coordinates })=> {
                 center={coordinates}
                 defaultZoom={14}
                 margin={[50, 50, 50, 50]}
-                limit={30}
                 options={''}
+                limit={30}
                 onChange={(e) => {
+                    console.log(e)
                     setCoordinates({ lat: e.center.lat, lng: e.center.lng })
                     setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw })
                 }}
