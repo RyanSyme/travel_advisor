@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect, createRef } from 'react'
 import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, Select } from '@material-ui/core'
 
 import PlaceDetails from '../PlaceDetails/PlaceDetails'
@@ -9,8 +9,13 @@ const List = ({ places, childClicked })=> {
     const classes = useStyles()
     const [type, setType] = useState('resturants')
     const [rating, setRating] = useState('')
+    const [elRefs, setElRefs] = useState([])
 
-    console.log({childClicked})
+    useEffect(()=> {
+        const refs = Array(places.length).fill.map((_, i)=> elRefs[i] || createRef)
+
+        setElRefs(refs)
+    }, [places])
 
     return (
         <div className={classes.container}>
